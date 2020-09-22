@@ -141,5 +141,5 @@ password: admin123
 ## Account demo:
 ```
 username: test1
-password: test1
+password: makanayam
 ```
