@@ -1,0 +1,7 @@
+Django==2.2.15
+numpy
+pandas
+Pillow
+scikit-learn
+scipy
+sklearn
