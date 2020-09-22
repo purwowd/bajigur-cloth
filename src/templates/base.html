@@ -28,9 +28,13 @@
                 {% if user.is_authenticated %}
                     <a class="dropdown-item" href="{% url 'auth' %}">Hi, {{ user.username }}</a>
                     <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'user-recommend-list' %}">Recommendations</a>
+                    <a class="dropdown-item" href="{% url 'review-list' %}">Latest reviews</a>
                     <a class="dropdown-item" href="{% url 'sign_out' %}">Log out</a>
                 {% else %}
                     <a class="dropdown-item" href="{% url 'auth' %}">Login / Register</a>
+                    <a class="dropdown-item" href="{% url 'auth' %}">Recommendations</a>
+                    <a class="dropdown-item" href="{% url 'review-list' %}">Latest reviews</a>
                 {% endif %}
               </div>
             </li>
