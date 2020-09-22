@@ -1,0 +1,8 @@
+# External package folder
+.vscode/
+.DS_Store
+venv
+
+# Python cache
+*.py[oc]
+__pycache__/
