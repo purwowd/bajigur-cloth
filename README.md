@@ -1,6 +1,6 @@
 # bajigur-cloth
 
-### Rekomendasi produk menggunakan algoritma `Clustering User Data and K-Means Clustering`
+Rekomendasi produk menggunakan algoritma `Clustering User Data and K-Means Clustering`
 
 ## Teknologi python yang digunakan:
 - Django
@@ -8,7 +8,7 @@
 - SciPy
 - Scikit-learn.
 
-## Algoritma rekomendasi product:
+## Algoritma rekomendasi produk:
 - `src/products/suggestions.py`
     ```python
     from django.contrib.auth.models import User
@@ -19,6 +19,7 @@
     from .models import Product, Review, Cluster
 
 
+    # Clustering User Data and K-Means Clustering Algorithms
     def update_clusters():
         num_reviews = Review.objects.count()
 
@@ -71,7 +72,6 @@
           return HttpResponseRedirect(reverse('product-detail', args=(product.id, )))
       return render(request, 'products/product_detail.html', {'product': product, 'form': form})
 
-  # Clustering User Data and K-Means Clustering Algorithms
   @login_required
   def user_recommendation_list(request):
       user_reviews = Review.objects.filter(user_name=request.user.username).prefetch_related('product')
@@ -128,10 +128,18 @@ git clone https://github.com/purwowd/bajigur-cloth.git
 cd bajigur-cloth/src/
 pip3 install -r requirements.txt
 python3 manage.py runserver
+
+- Buka browser dan akses alamat: `localhost:8000`
 ```
 
 ## Superuser:
 ```
 username: admin123
 password: admin123
+```
+
+## Account demo:
+```
+username: test1
+password: test1
 ```
