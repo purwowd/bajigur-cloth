@@ -15,24 +15,24 @@ def product_list(request):
     products = Product.objects.order_by('-name')
     context = {'products': products}
 
-    return render(request, 'products/product.html', context)
+    return render(request, 'products/products.html', context)
 
 
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     form = ReviewForm()
-    return render(request, 'products/product_detail.html', {'product': product, 'form': form})
+    return render(request, 'products/product_details.html', {'product': product, 'form': form})
 
 
 def review_list(request):
     latest_review_list = Review.objects.order_by('-pub_date')[:9]
     context = {'latest_review_list': latest_review_list}
-    return render(request, 'products/review_list.html', context)
+    return render(request, 'products/reviews.html', context)
 
 
 def review_detail(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
-    return render(request, 'products/review_detail.html', {'review': review})
+    return render(request, 'products/review_details.html', {'review': review})
 
 
 @login_required
@@ -54,7 +54,7 @@ def add_review(request, product_id):
         print(update_clusters)
 
         return HttpResponseRedirect(reverse('product-detail', args=(product.id, )))
-    return render(request, 'products/product_detail.html', {'product': product, 'form': form})
+    return render(request, 'products/product_details.html', {'product': product, 'form': form})
 
 
 def user_review_list(request, username=None):
@@ -62,7 +62,7 @@ def user_review_list(request, username=None):
         username = request.user.username
     latest_review_list = Review.objects.filter(user_name=username).order_by('-pub_date')
     context = {'latest_review_list': latest_review_list, 'username': username}
-    return render(request, 'products/user_review_list.html', context)
+    return render(request, 'products/reviews_by_user.html', context)
 
 
 @login_required
@@ -97,7 +97,6 @@ def user_recommendation_list(request):
     )
 
     return render(
-        request,
-        'products/user_recommendation_list.html',
+        request, 'products/recommendations.html',
         {'username': request.user.username, 'products': product_list}
     )
