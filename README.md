@@ -118,9 +118,13 @@ Rekomendasi produk menggunakan algoritma `Clustering User Data and K-Means Clust
   
   ![recommends](screenshot/product_recommend.jpeg)
   
-- `Review list`
+- `Latest reviews`
   
   ![reviews](screenshot/review_list.jpeg)
+
+- `Recent review & add review some product`
+  
+  ![add_reviews](screenshot/recent_review_n_add_review.png)
 
 ## How to install & run:
 ```
