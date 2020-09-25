@@ -120,7 +120,7 @@ Rekomendasi produk menggunakan algoritma `Clustering User Data and K-Means Clust
   
 - `Latest reviews`
   
-  ![reviews](screenshot/review_list.jpeg)
+  ![reviews](screenshot/review_list.png)
 
 - `Recent review & add review some product`
   
