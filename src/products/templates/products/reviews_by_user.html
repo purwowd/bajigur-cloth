@@ -1,0 +1,28 @@
+{% extends 'products/reviews.html' %}
+
+{% block content %}
+{% if latest_review_list %}
+{% for review in latest_review_list %}
+{% if forloop.first %}
+<h2>Latest Reviews by {{ review.user_name }}</h2>
+<br>
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if latest_review_list %}
+<div class="row">
+    {% for review in latest_review_list %}
+    <div class="col-xs-6 col-lg-4">
+        <h4><a href="{% url 'review-detail' review.id %}">
+        {{ review.product.name }}
+        </a></h4>
+        <h6>Rated {{ review.rating }} of 5 by <a href="{% url 'user-review-list' review.user_name %}" >{{ review.user_name }}</a></h6>
+        <p>{{ review.comment }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No reviews are available.</p>
+{% endif %}
+{% endblock content %}
