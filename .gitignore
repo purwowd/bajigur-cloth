@@ -2,6 +2,7 @@
 .vscode/
 .DS_Store
 venv
+src/static_cdn/
 
 # Python cache
 *.py[oc]

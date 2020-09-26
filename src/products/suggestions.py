@@ -2,17 +2,15 @@ from django.contrib.auth.models import User
 from sklearn.cluster import KMeans
 from scipy.sparse import dok_matrix, csr_matrix
 import numpy as np
+import warnings
 
 from .models import Product, Review, Cluster
 
 
 def update_clusters():
     num_reviews = Review.objects.count()
-    # print(num_reviews)
 
     update_step = 6
-    # print(update_step)
-
     if num_reviews % update_step == 0:
         all_user_names = list(map(lambda x: x.username, User.objects.only('username')))
         all_product_ids = set(map(lambda x: x.product.id, Review.objects.only('product')))

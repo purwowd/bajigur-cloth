@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from .models import Account
 from .forms import CreateUserForm
 from .decorators import unauthenticated_user
+from orders.models import Order
 
 
 def home(request):
@@ -14,7 +15,15 @@ def home(request):
 
 
 def profile(request):
-    context = {}
+    if request.user.is_authenticated:
+        account = request.user.account
+        order, created = Order.objects.get_or_create(account=account, complete=False)
+        cart_items = order.get_cart_items
+    else:
+        order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
+        cart_items = order['get_cart_items']
+
+    context = {'cart_items': cart_items}
     return render(request, 'accounts/index.html', context)
 
 

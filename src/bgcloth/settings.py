@@ -18,7 +18,7 @@ SECRET_KEY = 'tj7hvru9jwqz7km-#%@ha$n)kqee&cz^f^)v4&a=us6c=#e=v7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     # Apps
     'accounts',
     'products',
+    'orders',
+    'shippings',
 
     # 3rd apps
     'widget_tweaks',
@@ -118,6 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

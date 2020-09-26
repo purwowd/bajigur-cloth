@@ -1,23 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-{% if products %}
-    <div class="row">
-        {% for product in products %}
-        <div class="col-lg-4">
-            <img class="thumbnail" src="{{ product.image_url }}" alt="" width="350" height="200">
-            <div class="box-element product">
-                <h6><strong>{{ product.name }}</strong></h6>
-                <p>{{ product.review_set.count }} reviews</p>
-                <p>{{ product.average_rating | floatformat }} average rating</p>
-                <hr>
-                <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
-                <a class="btn btn-outline-success" href="{% url 'product-detail' product.id %}">View</a>
-                <h5 style="display: inline-block;float: right">$ {{ product.price|floatformat:2 }}</h5>
+    {% if products %}
+        <div class="row">
+            {% for product in products %}
+            <div class="col-lg-4">
+                <img class="thumbnail" src="{{ product.image_url }}" alt="" width="350" height="200">
+                <div class="box-element product">
+                    <h6><strong>{{ product.name }}</strong></h6>
+                    <p>{{ product.review_set.count }} reviews</p>
+                    {% comment %} <p>{{ product.average_rating | floatformat }} average rating</p> {% endcomment %}
+                    <hr>
+                    <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                    <a class="btn btn-outline-success" href="{% url 'product-detail' product.id %}">View</a>
+                    <h5 style="display: inline-block;float: right">$ {{ product.price|floatformat:2 }}</h5>
+                </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-{% else %}
-    <p>No wines are available.</p>
-{% endif %}
+    {% else %}
+        <p>No wines are available.</p>
+    {% endif %}
 {% endblock content %}
