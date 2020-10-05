@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import numpy as np
+import warnings
 
 
 class Product(models.Model):
@@ -9,8 +10,12 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True)
 
     def average_rating(self):
-        all_ratings = list(map(lambda x: x.rating, self.review_set.all()))
-        return np.mean(all_ratings)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", category=RuntimeWarning)
+            all_ratings = list(map(lambda x: x.rating, self.review_set.all()))
+            result = np.mean(all_ratings)
+            result = np.nan_to_num(result)
+        return result
 
     def __str__(self):
         return self.name

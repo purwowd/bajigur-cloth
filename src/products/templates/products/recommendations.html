@@ -1,5 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'products/products.html' %}
 {% block content %}
+<h2>Recommendations for {{ user.username }}</h2>
+<br>
 {% if products %}
     <div class="row">
         {% for product in products %}
